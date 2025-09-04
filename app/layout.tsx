@@ -104,14 +104,14 @@ export default function RootLayout({
               description: "ارائه خدمات تخصصی ویزا، تحصیل، حواله ارزی، صادرات و واردات به روسیه",
               address: {
                 "@type": "PostalAddress",
-                streetAddress: "خیابان عبدالحمید اکبری، برج سپهر ساعی، طبقه دهم، واحد ۱۰۰۴",
+                streetAddress: "خیابان عبدالمجید اکبری، برج سپهر ساعی، طبقه دهم، واحد ۱۰۰۴",
                 addressLocality: "یوسف آباد",
                 addressRegion: "تهران",
                 addressCountry: "IR",
               },
               contactPoint: {
                 "@type": "ContactPoint",
-                telephone: "+98-912-218-3653",
+                telephone: "09122183653 - 02188552623 - 02188552624",
                 contactType: "customer service",
                 availableLanguage: ["Persian", "Russian"],
                 email: "info@pazirik.com",
