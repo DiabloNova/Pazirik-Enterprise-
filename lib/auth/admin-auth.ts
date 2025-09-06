@@ -219,3 +219,43 @@ export async function createInitialAdmin() {
     throw error
   }
 }
+// src/lib/auth/admin-auth.ts
+// (قسمت‌های قبلی کد شما در اینجا قرار دارند)
+// ...
+
+export async function signInAdmin(credentials: AdminCredentials): Promise<void> {
+  const { username, password } = credentials;
+
+  // Simulate an API call delay
+  await new Promise(resolve => setTimeout(resolve, 500));
+
+  // Check against the hardcoded fallback admin credentials
+  if (username === FALLBACK_ADMIN.username && password === FALLBACK_ADMIN.password) {
+    // If credentials are valid, create a user object and set the session
+    const adminUser: AdminUser = {
+      id: FALLBACK_ADMIN.id,
+      username: FALLBACK_ADMIN.username,
+      email: FALLBACK_ADMIN.email,
+    };
+    setAdminSession(adminUser);
+    return;
+  }
+
+  // If credentials are not valid, throw an error
+  throw new Error("Invalid username or password.");
+}
+
+export function signOutAdmin() {
+  if (typeof window !== "undefined") {
+    localStorage.removeItem("admin_session");
+  }
+}
+
+export function getCurrentAdmin(): AdminUser | null {
+  const session = getAdminSession();
+  if (session && Date.now() - session.timestamp < 3600000) { // 1 hour validity
+    return session.user;
+  }
+  signOutAdmin(); // Clear expired session
+  return null;
+}
